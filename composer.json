@@ -20,7 +20,10 @@
     "Перевірка ІНН",
     "ИНН",
     "Проверка ИНН",
-    "validation INN"
+    "validation INN",
+    "Verification of the tax identification",
+    "Проверка налогового номера",
+    "Перевірка податкового номера"
   ],
   "license": "MIT",
   "autoload": {
