@@ -23,7 +23,16 @@
     "validation INN",
     "Verification of the tax identification",
     "Проверка налогового номера",
-    "Перевірка податкового номера"
+    "Перевірка податкового номера",
+    "Unified State Register of Enterprises and Organizations of Ukraine",
+    "Единый государственный реестр предприятий и организаций Украины",
+    "Єди́ний держа́вний реє́стр підприє́мств та організа́цій Украї́ни",
+    "ЄДРПОУ",
+    "ЕГРПОУ",
+    "USREOU",
+    "Перевірка ЄДРПОУ",
+    "Проверка ЕГРПОУ",
+    "validation USREOU"
   ],
   "license": "MIT",
   "autoload": {

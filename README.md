@@ -1,5 +1,5 @@
 # Ukrainian tax number decoder and validator
-
+# Unified State Register of Enterprises and Organizations of Ukraine
 
 ## Installation
 _This package requires PHP 5.4 or higher._
@@ -34,10 +34,10 @@ $code = '3184710691';
 
 try {
     /** @var PERSONAL_TAX_ID $result */
-    $result = PERSONAL_TAX_ID::parse_code($code);
+    $result = PERSONAL_TAX_ID::parse($code);
 
     if (PERSONAL_TAX_ID::STATUS_VALID == $result->getStatus()) {
-        echo 'Code valid:' . PERSONAL_TAX_ID::parse_code($code)->getCode() . "\n";
+        echo 'Code valid:' . PERSONAL_TAX_ID::parse($code)->getCode() . "\n";
 
         if (PERSONAL_TAX_ID::SEX_FEMALE === $result->getSex()) {
             echo 'Woman' . "\n";
@@ -87,7 +87,7 @@ $code = '3184710692';
 
 try {
     /** @var PERSONAL_TAX_ID $result */
-    $result = PERSONAL_TAX_ID::parse_code($code);
+    $result = PERSONAL_TAX_ID::parse($code);
 
     if (PERSONAL_TAX_ID::STATUS_VALID == $result->getStatus()) {
         echo 'Code valid:' . $result->getCode() . "\n";
@@ -123,6 +123,31 @@ DevelopingW\govValidationUA\PERSONAL_TAX_ID Object
     [year:protected] => 1987
     [status:protected] => 
 )
+```
+
+(EN) USREOU, Unified State Register of Enterprises and Organizations of Ukraine
+-------------
+
+(RU) ЕГРПОУ, Единый государственный реестр предприятий и организаций Украины
+-------------
+
+(UA) ЄДРПОУ, Єди́ний держа́вний реє́стр підприє́мств та організа́цій Украї́ни
+-------------
+
+```php
+<?php
+
+use DevelopingW\govValidationUA\LEGAL_ENTITY_TAX_ID;
+
+if (LEGAL_ENTITY_TAX_ID::STATUS_VALID === LEGAL_ENTITY_TAX_ID::parse("40870076")->getStatus()) {
+    echo 'ЄДРПОУ, Код, валідний!' . "\n";
+} else {
+    echo 'ЄДРПОУ, Код, невалідний!' . "\n";
+}
+```
+
+```php
+'ЄДРПОУ, Код, невалідний!'
 ```
 
 Donate:

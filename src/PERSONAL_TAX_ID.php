@@ -27,10 +27,25 @@ class PERSONAL_TAX_ID
     }
 
     /**
-     * @param mixed $code
+     * @param string $code
+     * @return void
+     * @throws \Exception
      */
     protected function setCode($code)
     {
+        if (!is_string($code)) {
+            throw new \Exception('The code must be string');
+        }
+
+        if (empty($code)) {
+            throw new \Exception('The code must not be empty');
+        }
+
+        // $code must contain 10 digits
+        if (!preg_match('/^\d{10}$/', $code)) {
+            throw new \Exception('Number must consist of 10 digits');
+        }
+
         $this->code = $code;
     }
 
@@ -160,28 +175,16 @@ class PERSONAL_TAX_ID
     }
 
     /**
-     * @param $inn
-     * @return mixed
+     * @param string $code
+     * @return self
      * @throws \Exception
      */
-    public static function parse_code($inn)
+    public static function parse($code)
     {
         $result = new self();
 
-        if (empty($inn)) {
-            throw new \Exception('The code must not be empty');
-        }
+        $result->setCode((string)$code);
 
-        if (!is_string($inn)) {
-            throw new \Exception('The code must be string');
-        }
-
-        //$id must contain 10 digits
-        if (!preg_match('/^\d{10}$/', $inn)) {
-            throw new \Exception('Number must consist of 10 digits');
-        }
-
-        $result->setCode($inn);
         $result->setSex((substr($result->getCode(), 8, 1) % 2) ? self::SEX_MALE : self::SEX_FEMALE);
 
         call_user_func(function ($object) {
