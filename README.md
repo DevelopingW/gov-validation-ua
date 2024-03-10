@@ -80,6 +80,7 @@ DevelopingW\govValidationUA\PERSONAL_TAX_ID Object
 
 ```
 
+Usage example:
 ```php
 <?php
 
@@ -134,6 +135,7 @@ DevelopingW\govValidationUA\PERSONAL_TAX_ID Object
 (UA) ЄДРПОУ, Єди́ний держа́вний реє́стр підприє́мств та організа́цій Украї́ни
 -------------
 
+Usage example:
 ```php
 <?php
 
@@ -146,6 +148,7 @@ if (LEGAL_ENTITY_TAX_ID::STATUS_VALID === LEGAL_ENTITY_TAX_ID::parse("40870076")
 }
 ```
 
+Result:
 ```php
 'ЄДРПОУ, Код, невалідний!'
 ```
