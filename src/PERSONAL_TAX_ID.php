@@ -2,15 +2,21 @@
 
 namespace DevelopingW\govValidationUA;
 
-class TAX_ID
+class PERSONAL_TAX_ID
 {
-    protected $code;
-    protected $sex;
-    protected $control;
-    protected $day;
-    protected $month;
-    protected $year;
-    protected $status;
+    const SEX_MALE = 'M';
+    const SEX_FEMALE = 'F';
+
+    const STATUS_VALID = true;
+    const STATUS_INVALID = false;
+
+    protected $code = '';
+    protected $sex = '';
+    protected $control = 0;
+    protected $day = 01;
+    protected $month = 01;
+    protected $year = 1900;
+    protected $status = false;
 
     /**
      * @return mixed
@@ -124,37 +130,45 @@ class TAX_ID
         $this->sex = $sex;
     }
 
-    public static function parse_inn($inn)
+    /**
+     * @param $inn
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function parse_code($inn)
     {
         $result = new self();
 
+        if (empty($inn)) {
+            throw new \Exception('The code must not be empty');
+        }
+
+        if (!is_string($inn)) {
+            throw new \Exception('The code must be string');
+        }
+
         //$id must contain 10 digits
-        if (empty($inn) || !preg_match('/^\d{10}$/', $inn)) {
-            return false;
+        if (!preg_match('/^\d{10}$/', $inn)) {
+            throw new \Exception('Number must consist of 10 digits');
         }
 
         $result->setCode($inn);
-        $result->setSex((substr($inn, 8, 1) % 2) ? 'm' : 'f');
+        $result->setSex((substr($result->getCode(), 8, 1) % 2) ? self::SEX_MALE : self::SEX_FEMALE);
 
-        $split = str_split($inn);
+        call_user_func(function ($object) {
+            $split = str_split($object->getCode());
+            $sum = $split[0] * (-1) + $split[1] * 5 + $split[2] * 7 + $split[3] * 9 + $split[4] * 4 + $split[5] * 6 + $split[6] * 10 + $split[7] * 5 + $split[8] * 7;
 
-        $sum = $split[0] * (-1) + $split[1] * 5 + $split[2] * 7 + $split[3] * 9 + $split[4] * 4 + $split[5] * 6 + $split[6] * 10 + $split[7] * 5 + $split[8] * 7;
+            $object->setControl((int)($sum - (11 * (int)($sum / 11))));
 
-        $result->setControl((int)($sum - (11 * (int)($sum / 11))));
+            $object->setStatus(((int)$object->getControl() === (int)$split[9]) ? self::STATUS_VALID : self::STATUS_INVALID);
+        }, $result);
 
-        $inn = substr($inn, 0, 5);
-
-        $normal_date = date('d.m.Y', strtotime('01/01/1900 + ' . $inn . ' days - 1 days'));
-
-        $result = call_user_func(function ($r, $object) {
+        call_user_func(function ($r, self $object) {
             $object->setDay($r['0']);
             $object->setMonth($r['1']);
             $object->setYear($r['2']);
-
-            return $object;
-        }, explode('.', $normal_date), $result);
-
-        $result->setStatus((((int)$result->getControl() === (int)$split[9]) ? true : false));
+        }, explode('.', date('d.m.Y', strtotime('01/01/1900 + ' . substr($result->getCode(), 0, 5) . ' days - 1 days'))), $result);
 
         return $result;
     }
