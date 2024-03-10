@@ -1,6 +1,6 @@
 {
   "name": "developingw/gov-validation-ua",
-  "description": "Validation RNTAC. Перевірка РНОКПП(ІНН). Optimized for php5.4 and above",
+  "description": "Validation Ukraine tax number. RNTAC. Перевірка РНОКПП(ІНН). Optimized for php5.4 and above",
   "homepage": "https://github.com/DevelopingW/gov-validation-ua",
   "type": "library",
   "keywords": [

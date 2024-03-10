@@ -131,6 +131,22 @@ class PERSONAL_TAX_ID
     }
 
     /**
+     * @return int
+     * @throws \Exception
+     */
+    public function getAge()
+    {
+        if (self::STATUS_VALID == $this->getStatus()) {
+            $currentDate = new \DateTime();
+            $birthday = new \DateTime($this->getYear() . '-' . $this->getMonth() . '-' . $this->getDay());
+
+            return $currentDate->diff($birthday)->y;
+        }
+
+        throw new \Exception('Code invalid!');
+    }
+
+    /**
      * @param $inn
      * @return mixed
      * @throws \Exception

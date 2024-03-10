@@ -1,4 +1,12 @@
-# gov-validation-ua
+# Ukrainian tax number decoder and validator
+
+
+## Installation
+_This package requires PHP 5.4 or higher._
+
+```shell
+composer require developingw/gov-validation-ua
+```
 
 (EN)What is this? | (RU)Что это? | (UA)Що це?
 -------------
@@ -18,6 +26,7 @@ Verification of the individual tax identification number of Ukrainian citizens.
 
 -------------
 
+Usage example:
 ```php
 <?php
 
@@ -37,6 +46,8 @@ try {
         }
 
         echo 'Date of Birth: ' . $result->getYear() . '-' . $result->getMonth() . '-' . $result->getDay() . "\n";
+        
+        echo 'Age person: ' . $result->getAge() . "\n";
     } else {
         echo 'Code invalid:' . $code . "\n";
     }
@@ -53,6 +64,7 @@ Result:
 Code valid:3184710691
 Man
 Date of Birth: 1987-03-12
+36
 DevelopingW\govValidationUA\PERSONAL_TAX_ID Object
 (
     [code:protected] => 3184710691
