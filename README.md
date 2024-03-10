@@ -156,8 +156,16 @@ Result:
 'ЄДРПОУ, Код, невалідний!'
 ```
 
-Usage example:
+(EN) Validate Bank Code of Ukraine
+-------------
 
+(RU) Проверка МФО Банка
+-------------
+
+(UA) Перевірка МФО Банка
+-------------
+
+Usage example:
 ```php
 <?php
 
