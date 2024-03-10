@@ -2,7 +2,7 @@
 
 namespace DevelopingW\govValidationUA;
 
-class PERSONAL_TAX_ID
+class PersonalTax_ID
 {
     const SEX_MALE = 'M';
     const SEX_FEMALE = 'F';

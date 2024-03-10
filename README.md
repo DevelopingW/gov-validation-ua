@@ -30,16 +30,18 @@ Usage example:
 ```php
 <?php
 
+use DevelopingW\govValidationUA\PersonalTaxID;
+
 $code = '3184710691';
 
 try {
-    /** @var PERSONAL_TAX_ID $result */
-    $result = PERSONAL_TAX_ID::parse($code);
+    /** @var PersonalTaxID $result */
+    $result = PersonalTaxID::parse($code);
 
-    if (PERSONAL_TAX_ID::STATUS_VALID == $result->getStatus()) {
-        echo 'Code valid:' . PERSONAL_TAX_ID::parse($code)->getCode() . "\n";
+    if (PersonalTaxID::STATUS_VALID == $result->getStatus()) {
+        echo 'Code valid:' . PersonalTaxID::parse($code)->getCode() . "\n";
 
-        if (PERSONAL_TAX_ID::SEX_FEMALE === $result->getSex()) {
+        if (PersonalTaxID::SEX_FEMALE === $result->getSex()) {
             echo 'Woman' . "\n";
         } else {
             echo 'Man' . "\n";
@@ -67,7 +69,7 @@ Man
 Date of Birth: 1987-03-12
 1987-03-12
 Age person: 36
-DevelopingW\govValidationUA\PERSONAL_TAX_ID Object
+DevelopingW\govValidationUA\PersonalTaxID Object
 (
     [code:protected] => 3184710691
     [sex:protected] => M
@@ -84,16 +86,18 @@ Usage example:
 ```php
 <?php
 
+use DevelopingW\govValidationUA\PersonalTaxID;
+
 $code = '3184710692';
 
 try {
-    /** @var PERSONAL_TAX_ID $result */
-    $result = PERSONAL_TAX_ID::parse($code);
+    /** @var PersonalTaxID $result */
+    $result = PersonalTaxID::parse($code);
 
-    if (PERSONAL_TAX_ID::STATUS_VALID == $result->getStatus()) {
+    if (PersonalTaxID::STATUS_VALID == $result->getStatus()) {
         echo 'Code valid:' . $result->getCode() . "\n";
 
-        if (PERSONAL_TAX_ID::SEX_FEMALE === $result->getSex()) {
+        if (PersonalTaxID::SEX_FEMALE === $result->getSex()) {
             echo 'Woman' . "\n";
         } else {
             echo 'Man' . "\n";
@@ -108,13 +112,12 @@ try {
 } catch (\Exception $e) {
     echo $e->getMessage()."\n";
 }
-
 ```
 
 Result:
 ```php
 Code invalid:3184710692
-DevelopingW\govValidationUA\PERSONAL_TAX_ID Object
+DevelopingW\govValidationUA\PersonalTaxID Object
 (
     [code:protected] => 3184710692
     [sex:protected] => M
@@ -139,9 +142,9 @@ Usage example:
 ```php
 <?php
 
-use DevelopingW\govValidationUA\LEGAL_ENTITY_TAX_ID;
+use DevelopingW\govValidationUA\LegalEntityTaxID;
 
-if (LEGAL_ENTITY_TAX_ID::STATUS_VALID === LEGAL_ENTITY_TAX_ID::parse("40870076")->getStatus()) {
+if (LegalEntityTaxID::STATUS_VALID === LegalEntityTaxID::parse("40870076")->getStatus()) {
     echo 'ЄДРПОУ, Код, валідний!' . "\n";
 } else {
     echo 'ЄДРПОУ, Код, невалідний!' . "\n";
@@ -151,6 +154,23 @@ if (LEGAL_ENTITY_TAX_ID::STATUS_VALID === LEGAL_ENTITY_TAX_ID::parse("40870076")
 Result:
 ```php
 'ЄДРПОУ, Код, невалідний!'
+```
+
+Usage example:
+
+```php
+<?php
+
+use DevelopingW\govValidationUA\BankCodeID;
+
+if (BankCodeID::parse("320649")->getStatus()) {
+    echo 'МФО валідний' . "\n";
+}
+```
+
+Result:
+```php
+'МФО валідний'
 ```
 
 Donate:

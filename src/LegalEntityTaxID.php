@@ -2,7 +2,7 @@
 
 namespace DevelopingW\govValidationUA;
 
-class LEGAL_ENTITY_TAX_ID
+class LegalEntityTaxID
 {
     protected $code = '';
     protected $codeWithoutControl = 0;
@@ -19,12 +19,12 @@ class LEGAL_ENTITY_TAX_ID
      */
     public function setCode($code)
     {
-        if (!is_string($code)) {
-            throw new \Exception('The code must be string');
-        }
-
         if (empty($code)) {
             throw new \Exception('The code must not be empty');
+        }
+
+        if (!is_string($code)) {
+            throw new \Exception('The code must be string');
         }
 
         // $code must contain 8 digits

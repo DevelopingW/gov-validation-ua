@@ -1,6 +1,6 @@
 {
   "name": "developingw/gov-validation-ua",
-  "description": "Validation Ukraine tax number.\n RNTAC. Перевірка РНОКПП, ІНН, ЄДРПОУ, ЕГРПОУ. Optimized for php5.4 and above",
+  "description": "Validation Ukraine tax number.\n RNTAC. Перевірка РНОКПП, ІНН, ЄДРПОУ, ЕГРПОУ, МФО, BankCode. Optimized for php5.4 and above",
   "homepage": "https://github.com/DevelopingW/gov-validation-ua",
   "type": "library",
   "keywords": [
@@ -32,7 +32,11 @@
     "USREOU",
     "Перевірка ЄДРПОУ",
     "Проверка ЕГРПОУ",
-    "validation USREOU"
+    "validation USREOU",
+    "BankCode",
+    "МФО",
+    "Проверка МФО",
+    "Перевірка МФО"
   ],
   "license": "MIT",
   "autoload": {
