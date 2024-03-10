@@ -1,0 +1,42 @@
+{
+  "name": "developingw/gov-validation-ua",
+  "description": "validation RNTAC. Перевірка РНОКПП(ІНН)",
+  "homepage": "https://github.com/DevelopingW/gov-validation-ua",
+  "type": "library",
+  "keywords": [
+    "GOV UA",
+    "api",
+    "API",
+    "Україна",
+    "Украина",
+    "Ukraine",
+    "RNTAC",
+    "validation RNTAC",
+    "РНУКПН",
+    "Проверка РНУКПН",
+    "РНОКПП",
+    "Перевірка РНОКПП",
+    "ІНН",
+    "Перевірка ІНН",
+    "ИНН",
+    "Проверка ИНН",
+    "validation INN"
+  ],
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "DevelopingW\\govValidationUA\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Anton Kalochelitis",
+      "email": "developing.w@gmail.com",
+      "homepage": "https://w-develop.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  }
+}
