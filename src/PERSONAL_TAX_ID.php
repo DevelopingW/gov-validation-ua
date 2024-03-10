@@ -147,6 +147,19 @@ class PERSONAL_TAX_ID
     }
 
     /**
+     * @return string
+     * @throws \Exception
+     */
+    public function getDateOfBirth()
+    {
+        if (self::STATUS_VALID == $this->getStatus()) {
+            return $this->getYear() . '-' . $this->getMonth() . '-' . $this->getDay();
+        }
+
+        throw new \Exception('Code invalid!');
+    }
+
+    /**
      * @param $inn
      * @return mixed
      * @throws \Exception

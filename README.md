@@ -37,7 +37,7 @@ try {
     $result = PERSONAL_TAX_ID::parse_code($code);
 
     if (PERSONAL_TAX_ID::STATUS_VALID == $result->getStatus()) {
-        echo 'Code valid:' . $code . "\n";
+        echo 'Code valid:' . PERSONAL_TAX_ID::parse_code($code)->getCode() . "\n";
 
         if (PERSONAL_TAX_ID::SEX_FEMALE === $result->getSex()) {
             echo 'Woman' . "\n";
@@ -46,6 +46,7 @@ try {
         }
 
         echo 'Date of Birth: ' . $result->getYear() . '-' . $result->getMonth() . '-' . $result->getDay() . "\n";
+        echo $result->getDateOfBirth() . "\n";
         
         echo 'Age person: ' . $result->getAge() . "\n";
     } else {
@@ -64,7 +65,8 @@ Result:
 Code valid:3184710691
 Man
 Date of Birth: 1987-03-12
-36
+1987-03-12
+Age person: 36
 DevelopingW\govValidationUA\PERSONAL_TAX_ID Object
 (
     [code:protected] => 3184710691
@@ -88,7 +90,7 @@ try {
     $result = PERSONAL_TAX_ID::parse_code($code);
 
     if (PERSONAL_TAX_ID::STATUS_VALID == $result->getStatus()) {
-        echo 'Code valid:' . $code . "\n";
+        echo 'Code valid:' . $result->getCode() . "\n";
 
         if (PERSONAL_TAX_ID::SEX_FEMALE === $result->getSex()) {
             echo 'Woman' . "\n";
