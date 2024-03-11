@@ -181,6 +181,85 @@ Result:
 'МФО валідний'
 ```
 
+Barcode: EAN-8, UPC-12, EAN-13;
+------------
+
+Usage example:
+```php
+<?php
+
+use DevelopingW\govValidationUA\CheckBarcodeID;
+
+$result = CheckBarcodeID::parse('4823063112680');
+if ($result->getStatus()) {
+    print_r($result);
+}
+
+$result = CheckBarcodeID::parse('4823063125574');
+if ($result->getStatus()) {
+    print_r($result);
+}
+
+$result = CheckBarcodeID::parse('40345208');
+if ($result->getStatus()) {
+    print_r($result);
+}
+
+$result = CheckBarcodeID::parse('041689300494');
+if ($result->getStatus()) {
+    print_r($result);
+}
+
+$result = CheckBarcodeID::parse('5901234123457');
+if ($result->getStatus()) {
+    print_r($result);
+}
+```
+
+Result:
+```php
+DevelopingW\govValidationUA\CheckBarcodeID Object
+(
+    [code:protected] => 4823063112680
+    [codeWithoutControl:protected] => 482306311268
+    [control:protected] => 0
+    [status:protected] => 1
+    [standard:protected] => EAN-13
+)
+DevelopingW\govValidationUA\CheckBarcodeID Object
+(
+    [code:protected] => 4823063125574
+    [codeWithoutControl:protected] => 482306312557
+    [control:protected] => 4
+    [status:protected] => 1
+    [standard:protected] => EAN-13
+)
+DevelopingW\govValidationUA\CheckBarcodeID Object
+(
+    [code:protected] => 40345208
+    [codeWithoutControl:protected] => 4034520
+    [control:protected] => 8
+    [status:protected] => 1
+    [standard:protected] => EAN-8
+)
+DevelopingW\govValidationUA\CheckBarcodeID Object
+(
+    [code:protected] => 041689300494
+    [codeWithoutControl:protected] => 04168930049
+    [control:protected] => 4
+    [status:protected] => 1
+    [standard:protected] => UPC-12
+)
+DevelopingW\govValidationUA\CheckBarcodeID Object
+(
+    [code:protected] => 5901234123457
+    [codeWithoutControl:protected] => 590123412345
+    [control:protected] => 7
+    [status:protected] => 1
+    [standard:protected] => EAN-13
+)
+```
+
 Donate:
 ------------
 ***
